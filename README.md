@@ -55,9 +55,9 @@ cv2.imshow("Facial Landmarks", image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
-3- Pour Ajouter la vérification des cartes via le capteur:
+3- Pour Ajouter la vérification des cartes via le capteur(OAAS ):
 
-# Liste des cartes d'accès autorisées
+# Liste des cartes d'accès autorisées.
 cartes_autorisees = ["1234ABCD", "5678EFGH", "9012IJKL"]
 
 def verifier_acces(carte):
@@ -97,3 +97,21 @@ if acces_autorise:
     print("Accès autorisé. Bienvenue dans la salle.")
 else:
     print("Accès refusé. Vous n'êtes pas autorisé à accéder à cette salle.")
+
+5- Pour le redémarrage de la NUR (faites seulement avec un pc connecté via un cable):
+
+
+import os
+
+def reboot_robot():
+    if os.name == 'posix':  # Pour les systèmes Unix-like (comme Linux)
+        os.system('sudo reboot')
+    elif os.name == 'nt':  # Pour les systèmes Windows
+        os.system('shutdown /r /t 0')
+    else:
+        print("Système d'exploitation non pris en charge pour le redémarrage.")
+
+if __name__ == "__main__":
+    print("Redémarrage du robot en cours...")
+    reboot_robot()
+
